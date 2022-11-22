@@ -17,12 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/empresa', function() {
-    return view('/site/empresa');
-});
-
 Route::any('/qualquercoisa', function() {
-    return "Permite todo tipo de acesso http (puy, delete, get, post)";
+    return "Permite todo tipo de acesso http (put, delete, get, post)";
 });
 
 Route::match(['get', 'post'], '/definido', function() {
@@ -31,4 +27,16 @@ Route::match(['get', 'post'], '/definido', function() {
 
 Route::get('/produto/{id}/{cat?}', function($id, $cat = '') {
     return "O id do produto é: $id" . "<br>" . "A categoria é: $cat";
+});
+
+Route::redirect('/sobre', '/empresa');
+
+Route::view('/empresa', 'site/empresa');
+
+Route::get('/timesnownews', function() {
+    return view('/news');
+})->name('noticias');
+
+Route::get('/novidades', function() {
+    return redirect()->route('noticias');
 });
