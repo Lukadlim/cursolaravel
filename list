@@ -1,0 +1,7 @@
+
+  [37;41m ERROR [39;49m Command "route" is not defined. Did you mean one of these?  
+
+  [90m⇂ route:cache[39m  
+  [90m⇂ route:clear[39m  
+  [90m⇂ route:list[39m  
+
