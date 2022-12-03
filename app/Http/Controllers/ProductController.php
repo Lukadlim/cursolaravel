@@ -16,15 +16,9 @@ class ProductController extends Controller
     {
         // return 'Index';
 
-        // $products = Product::all();
-        // return dd($products);
+        $products = Product::paginate(3);
 
-        $name = 'Rodrigo';
-        $age = '28';
-        $fruits = ['banana', 'orange', 'apple'];
-        $html = '<h1> Hello im H1 </h1>';
-
-        return view('site.home', compact('name', 'age', 'html', 'fruits'));
+        return view('site.home', compact('products'));
     }
 
     /**
