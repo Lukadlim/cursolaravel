@@ -11,6 +11,10 @@
         <div class="col s12 m6">
             <p style="font-size: 2em"> {{ $product->name }} </p>
             <p> {{ $product->description }} </p>
+            <p>
+                Posted by: {{ $product->user->firstname }} <br>
+                Category: {{ $product->category->name }}
+            </p>
             <button class="btn orange btn-large">Buy</button>
         </div>
     </div>
