@@ -16,15 +16,18 @@
     @foreach ($categoriesMenu as $categoryM)
       <li><a href="{{ route('site.category', $categoryM->id) }}"> {{ $categoryM->name }} </a></li>
     @endforeach
+    
   </ul>
 
   <nav class="red">
       <div class="nav-wrapper container">
         <a href="#" class="brand-logo center">CursoLaravel</a>
         <ul id="nav-mobile" class="left">
-          <li><a href="../">Home</a></li>
+
+          <li><a href=" {{ route('site.index') }} ">Home</a></li>
           <li><a class='dropdown-trigger' href='' data-target='dropdown1'>Categories <i class="material-icons right">expand_more</i></a></li>
           <li><a href="#">Shopping cart</a></li>
+
         </ul>
       </div>
   </nav>

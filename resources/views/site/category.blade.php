@@ -5,7 +5,7 @@
 
     <div class="row container">
 
-        <h1 style="font-size: 2em" >Category: </h1>
+        <h1 style="font-size: 2em" >Category:  {{$category->name}} </h1>
 
         @foreach ($products as $product)
 
