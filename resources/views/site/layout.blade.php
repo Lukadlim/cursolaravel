@@ -26,7 +26,7 @@
 
           <li><a href=" {{ route('site.index') }} ">Home</a></li>
           <li><a class='dropdown-trigger' href='' data-target='dropdown1'>Categories <i class="material-icons right">expand_more</i></a></li>
-          <li><a href="#">Shopping cart</a></li>
+          <li><a href=" {{route('site.cart')}} ">Shopping cart</a></li>
 
         </ul>
       </div>
