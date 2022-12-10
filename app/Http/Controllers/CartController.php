@@ -22,5 +22,25 @@ class CartController extends Controller
                 'image' => $request->img
             ),
         ]);
+
+        return redirect()->route('site.cart')->with('success', 'The product was successfully added');
+    }
+
+    public function removeCart(Request $request) {
+
+        \Cart::remove($request->id);
+        return redirect()->route('site.cart')->with('success', 'The product was successfully removed');
+    }
+
+    public function updateCart(Request $request) {
+        \Cart::update($request->id, [
+            'quantity' => [
+                'relative' => false,
+                'value' => $request->quantity
+                ]
+            ]
+        );
+
+        return redirect()->route('site.cart')->with('success', 'The product was successfully updated');
     }
 }

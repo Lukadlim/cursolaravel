@@ -13,3 +13,5 @@ Route::get('/category/{id}', [SiteController::class, 'category'])->name('site.ca
 
 Route::get('/cart', [CartController::class, 'cartList'])->name('site.cart');
 Route::post('/cart', [CartController::class, 'addCart'])->name('site.addcart');
+Route::post('/remove', [CartController::class, 'removeCart'])->name('site.removecart');
+Route::post('/update', [CartController::class, 'updateCart'])->name('site.updatecart');

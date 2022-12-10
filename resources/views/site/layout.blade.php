@@ -26,7 +26,7 @@
 
           <li><a href=" {{ route('site.index') }} ">Home</a></li>
           <li><a class='dropdown-trigger' href='' data-target='dropdown1'>Categories <i class="material-icons right">expand_more</i></a></li>
-          <li><a href=" {{route('site.cart')}} ">Shopping cart</a></li>
+          <li><a href=" {{route('site.cart')}} ">Shopping cart  <span class="new badge light-blue darken-4" data-badge-caption=""> {{\Cart::getContent()->count()}} </span> </a></li>
 
         </ul>
       </div>
