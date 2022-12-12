@@ -17,7 +17,7 @@ class CartController extends Controller
             'id' => $request->id,
             'name' => $request->name,
             'price' => $request->price,
-            'quantity' => $request->qnt,
+            'quantity' => abs($request->qnt),
             'attributes' => array(
                 'image' => $request->img
             ),
@@ -36,11 +36,15 @@ class CartController extends Controller
         \Cart::update($request->id, [
             'quantity' => [
                 'relative' => false,
-                'value' => $request->quantity
-                ]
-            ]
+                'value' => abs($request->quantity)
+            ],
+        ],
         );
-
         return redirect()->route('site.cart')->with('success', 'The product was successfully updated');
+    }
+
+    public function clearCart() {
+        \Cart::clear();
+        return redirect()->route('site.cart')->with('notice', 'Your shopping cart is empty');
     }
 }
