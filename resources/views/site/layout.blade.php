@@ -19,17 +19,31 @@
     
   </ul>
 
+  <!-- Dropdown Structure -->
+  <ul id='dropdown2' class='dropdown-content'>
+    
+    <li><a href="{{ route('admin.dashboard') }}"> Dashboard </a></li>
+    
+  </ul>
+
   <nav class="red">
-      <div class="nav-wrapper container">
-        <a href="#" class="brand-logo center">CursoLaravel</a>
-        <ul id="nav-mobile" class="left">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo center">CursoLaravel</a>
+      <ul id="nav-mobile" class="left">
 
-          <li><a href=" {{ route('site.index') }} ">Home</a></li>
-          <li><a class='dropdown-trigger' href='' data-target='dropdown1'>Categories <i class="material-icons right">expand_more</i></a></li>
-          <li><a href=" {{route('site.cart')}} ">Shopping cart  <span class="new badge light-blue darken-4" data-badge-caption=""> {{\Cart::getContent()->count()}} </span> </a></li>
+        <li><a href=" {{ route('site.index') }} ">Home</a></li>
+        <li><a class='dropdown-trigger' href='' data-target='dropdown1'>Categories <i class="material-icons right">expand_more</i></a></li>
+        <li><a href=" {{route('site.cart')}} ">Shopping cart  <span class="new badge light-blue darken-4" data-badge-caption=""> {{\Cart::getContent()->count()}} </span> </a></li>
 
-        </ul>
-      </div>
+      </ul>
+
+      <ul id="nav-mobile" class="right">
+
+        <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>Olá {{auth()->user()->firstname}} <i class="material-icons right">expand_more</i></a></li>
+        
+      </ul>
+
+    </div>
   </nav>
       
   @yield('content')
