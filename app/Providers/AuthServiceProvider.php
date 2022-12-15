@@ -2,8 +2,13 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Gate;
+// use Illuminate\Auth\Access\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Models\User;
+use App\Models\Product;
+
+
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +30,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('see-product', function(User $user, Product $product){
+            return $user->id === $product->id_user;
+        });
     }
 }
