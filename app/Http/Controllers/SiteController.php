@@ -21,9 +21,25 @@ class SiteController extends Controller
     public function details($slug) {
         $product = Product::where('slug', $slug)->first();
 
-        Gate::authorize('see-product', $product);
+        // Gate::authorize('see-product', $product);
+        // $this->authorize('seeProduct', $product);
 
-        return view('site.details', compact('product'));
+        // if(Gate::allows('see-product', $product)) {
+        //     return view('site.details', compact('product')); 
+        // }
+
+        // if(Gate::denies('see-product', $product)) {
+        //     return redirect()->route('site.index');
+        // }
+
+        if(auth()->user()->can('seeProduct', $product)) {
+            return view('site.details', compact('product')); 
+        }
+
+        if(auth()->user()->cannot('see-product', $product)) {
+            return redirect()->route('site.index');
+        }
+
     }
     
     public function category($id) {
