@@ -42,7 +42,7 @@
 
         @auth
             
-        <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>Olá {{auth()->user()->firstname}} <i class="material-icons right">expand_more</i></a></li>
+        <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>Hello {{auth()->user()->firstname}} <i class="material-icons right">expand_more</i></a></li>
         @else
         <li><a href=" {{route('login.form')}} " >Login<i class="material-icons right">lock</i></a></li>
 

@@ -10,8 +10,8 @@ use App\Http\Middleware\CheckEmail;
 Use App\Http\Controllers\UserController;
 use LDAP\Result;
 
-Route::resource('products', ProductController::class);
-Route::resource('users', UserController::class);
+// Route::resource('products', ProductController::class);
+// Route::resource('users', UserController::class);
 
 Route::get('/', [SiteController::class, 'index'])->name('site.index');
 Route::get('/product/{slug}', [SiteController::class, 'details'])->name('site.details');
@@ -29,3 +29,4 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 Route::get('/register', [LoginController::class, 'create'])->name('login.create');
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'checkemail']);
+Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products');
