@@ -20,7 +20,7 @@ class ProductController extends Controller
 
         // return view('site.home', compact('products'));
 
-        $products = Product::all();
+        $products = Product::paginate(5);
         return view('admin.products', compact('products'));
     }
 
@@ -87,6 +87,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        return redirect()->route('admin.products')->with('success', 'Product was succesfully removed');
     }
 }
