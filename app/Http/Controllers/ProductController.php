@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -21,7 +23,8 @@ class ProductController extends Controller
         // return view('site.home', compact('products'));
 
         $products = Product::paginate(5);
-        return view('admin.products', compact('products'));
+        $categories = Category::all();
+        return view('admin.products', compact('products', 'categories'));
     }
 
     /**
@@ -42,7 +45,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = $request->all();
+
+        if($request->image) {
+            $product['image'] = $request->image->store('products');
+        }
+
+        $product['slug'] = Str::slug($request->name);
+
+        $product = Product::create($product);
+
+        return redirect()->route('admin.products')->with('success', 'The product was successfully registered');
     }
 
     /**

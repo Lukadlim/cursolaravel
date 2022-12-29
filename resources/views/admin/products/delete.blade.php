@@ -10,7 +10,7 @@
        
         <a href="#!" class="modal-close waves-effect waves-green btn blue right">Cancel</a>
 
-        <form action=" {{route('admin.delete', $product->id)}} " method="post">
+        <form action=" {{route('admin.product.delete', $product->id)}} " method="post">
             @method('DELETE')
             @csrf
             <button type="submit" class="waves-effect waves-green btn red right">Delete</button><br>

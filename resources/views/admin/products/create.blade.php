@@ -1,31 +1,53 @@
 <!-- Modal Structure -->
-<div id="modal1" class="modal">
+<div id="create" class="modal">
     <div class="modal-content">
-      <h4><i class="material-icons">card_giftcard</i> Novo produto</h4>
-      <form class="col s12">
+      <h4><i class="material-icons">playlist_add_circle</i> New product</h4>
+      <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data" class="col s12">
+        @csrf
+
+        <input type="hidden" name="id_user" value=" {{auth()->user()->id}} ">
+
         <div class="row">
           <div class="input-field col s6">
-            <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-            <label for="first_name">First Name</label>
+            <input name="name" id="name" type="text" class="validate">
+            <label for="name">Name</label>
           </div>
           <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate">
-            <label for="last_name">Last Name</label>
+            <input name="price" id="price" type="number" class="validate" min="1">
+            <label for="price">Price</label>
           </div>
 
           <div class="input-field col s12">
-            <select>
+            <input name="description" id="description" type="text" class="validate">
+            <label for="description">Description</label>
+          </div>
+
+          <div class="input-field col s12">
+            <select name="id_category">
               <option value="" disabled selected>Choose your option</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+              @foreach ($categories as $category)
+                <option value=" {{$category->id}} ">{{$category->name}}</option>
+              @endforeach
+              
+              
             </select>
-            <label>Materialize Select</label>
-          </div>          
+            <label>Category</label>
+          </div>
+          
+          <div class="file-field input-field col s12">
+            <div class="btn">
+              <span>Image</span>
+              <input name="image" type="file">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+          </div>
 
         </div> 
        
-        <a href="#!" class="modal-close waves-effect waves-green btn blue right">Cadastrar</a><br>
+        <a style="margin-left: 2px" href="#!" class="modal-close waves-effect waves-green btn blue right">Cancel</a>
+        <button type="submit" class="waves-effect waves-green btn green right">Register</button><br>
     </div>
     
   </form>
